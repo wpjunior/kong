@@ -1,0 +1,377 @@
+@import (inline) "../bower_components/skeleton-css/css/normalize.css";
+@import (inline) "../bower_components/skeleton-css/css/skeleton.css";
+@import (inline) "footer.css";
+
+@family-default: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@family-whitney: 'Whitney A', 'Whitney B', @family-default;
+@family-whitney-ss: 'Whitney SSm A', 'Whitney SSm B', @family-default;
+@family-whitney-ss-sc: 'Whitney SSm SmallCaps A', 'Whitney SSm SmallCaps B', @family-default;
+
+// Colors
+
+@font-color: #505659;
+@light-gray: #5c6266;
+@middle-gray: #45494d;
+@dark-gray: #323638;
+@green: #23ab5f;
+
+// Sekeleton overrides
+
+body {
+  font-family: @family-whitney-ss, @family-default;
+  color: @font-color;
+}
+
+.container {
+  max-width: 960px;
+}
+
+.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+  border: 0 none;
+  padding: 1px 14px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
+  border-radius: 3px;
+  background-color: @green;
+  background-image: linear-gradient(to bottom, #29af65, #20a659);
+  box-shadow: inset 0 -1px 0 #177942;
+
+  &:hover {
+    background-image: linear-gradient(to bottom, #16a257, #0c8d41);
+    box-shadow: inset 0 -1px 0 #096830;
+  }
+
+  &:active {
+    background-image: linear-gradient(to bottom, #0c803c, #149651);
+    box-shadow: inset 0 1px 0 #085e2c;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+  }
+}
+
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  border-radius: 3px;
+  letter-spacing: 0;
+  font-weight: 600;
+  text-transform: none;
+  font-size: 13px;
+  color: @green;
+  border-color: #bae2cc;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 13px;
+  margin: 0;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: @green;
+    border-color: #7bcd9f;
+  }
+
+  &:hover {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, .15), rgba(189, 230, 207, .15));
+  }
+
+  &:active {
+    background: #e8f8ee;
+  }
+}
+
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  border-radius: 3px;
+  &:focus {
+    border: 1px solid @green;
+    outline: 0;
+  }
+}
+
+.button-large {
+  font-size: 16px;
+  line-height: 44px;
+  height: 44px;
+}
+
+// General styles
+
+figure {
+  margin: 0;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+// Navbar
+
+.navbar {
+  &:extend(.u-cf, .u-full-width);
+  background-color: #fff;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .08);
+}
+
+.navbar-nav {
+  &:extend(.u-cf);
+  margin: 0 -15px;
+  float: right;
+
+  > li {
+    margin: 0;
+    list-style: none;
+    float: left;
+  }
+
+  > li > a {
+    color: @light-gray;
+    text-decoration: none;
+    display: block;
+    font-weight: 500;
+    padding: 15px 12px;
+    line-height: 22px;
+    font-size: 13px;
+    transition: all .2s linear;
+
+    &:hover {
+      color: #2c3033;
+    }
+
+    &:active,
+    &.active {
+      color: #0e9245;
+    }
+  }
+
+  .button {
+    &:extend(.button);
+    height: 32px;
+    line-height: 32px;
+    font-weight: 500;
+  }
+}
+
+.navbar-form {
+  margin: 10px 12px;
+}
+
+.navbar-brand {
+  padding-top: 14px;
+  float: left;
+}
+
+// Sections
+
+.intro-section {
+  display: table;
+  width: 100%;
+  text-align: center;
+  padding: 4rem 0;
+
+  .intro-section-well {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  h2 {
+    font-family: @family-whitney;
+    font-size: 28px;
+    font-weight: 600;
+    color: @dark-gray;
+  }
+
+  p {
+    font-size: 17px;
+    line-height: 27px;
+    font-weight: 500;
+  }
+
+  .button {
+    margin-right: 10px;
+  }
+
+  @media (min-width: 1000px) {
+    min-height: 450px;
+    text-align: left;
+    background-size: contain;
+    background: url("../images/net/net-1x.png") no-repeat right center;
+    padding: 0;
+  }
+}
+
+.social-buttons-section {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #fbfbfc;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    line-height: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 40px;
+
+    iframe {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+
+.section {
+  padding: 60px 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 45px;
+
+  h2 {
+    margin: 0;
+    font-size: 33px;
+    font-weight: 300;
+    color: #45494d;
+  }
+
+  p {
+    color: #74777a;
+    margin: 5px 0 0;
+  }
+}
+
+.section-buttons {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.features-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+
+  h3 {
+    font-family: @family-whitney;
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: @middle-gray;
+  }
+
+  img {
+    margin-bottom: 20px;
+  }
+
+  p {
+    margin: 0;
+    line-height: 22px;
+    font-weight: 500;
+    color: #667580;
+
+    + p {
+      margin-top: 15px;
+    }
+  }
+}
+
+.how-it-works-section {
+  background-color: #fbfbfc;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  text-align: center;
+  padding-bottom: 0;
+
+  .section-header {
+    margin-bottom: 50px;
+  }
+
+  .features-list {
+    margin-top: 45px;
+  }
+
+  h4 {
+    font-family: @family-whitney-ss-sc;
+    font-size: 13px;
+    color: #929da6;
+    position: relative;
+    font-weight: 500;
+    z-index: 1;
+    margin: 0;
+
+    span {
+      background-color: #fbfbfc;
+      padding: 0 15px;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      background-color: #f0f0f0;
+      height: 1px;
+      width: 100%;
+      left: 0;
+      top: 50%;
+      z-index: -1;
+    }
+  }
+
+  .section-buttons {
+    margin-bottom: 85px;
+  }
+}
+
+.powered-list {
+  display: table;
+  width: 100%;
+
+  .powered-list-item {
+    display: table-cell;
+    height: 85px;
+    vertical-align: middle;
+  }
+}
+
+.looking-for-help-section {
+  .features-list {
+    h3 {
+      margin-bottom: 15px;
+    }
+
+    img {
+      margin-bottom: 10px;
+    }
+  }
+
+  .three.columns {
+    position: relative;
+    margin-bottom: 0;
+
+    + .columns:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -8%;
+      width: 2px;
+      height: 100%;
+      background-color: #f2f2f2;
+    }
+  }
+}
