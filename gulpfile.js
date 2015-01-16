@@ -11,7 +11,7 @@ var clean = new less_clean({ advanced: true });
 var prefix = new less_prefix({ browsers: ['last 2 versions'] });
 
 var src = {
-  less: 'styles/**/*.less'
+  less: 'styles/styles.less'
 };
 
 var dist = {
