@@ -3,5 +3,7 @@ dist
 bower_components
 node_modules
 
+*.css.map
+
 # Apenode
 tmp
