@@ -3,6 +3,7 @@
 var del = require('del');
 var gulp = require('gulp');
 var less = require('gulp-less');
+var jade = require('gulp-jade');
 var uncss = require('gulp-uncss');
 var combiner = require('stream-combiner2');
 var minifycss = require('gulp-minify-css');
@@ -15,11 +16,13 @@ var clean = new less_clean({ advanced: true });
 var prefix = new less_prefix({ browsers: ['last 2 versions'] });
 
 var src = {
-  less: 'styles/styles.less'
+  less: 'styles/styles.less',
+  views: ['./views/**/*.jade', '!./views/layout.jade']
 };
 
 var dist = {
-  css: 'css/'
+  css: 'css/',
+  views: './'
 };
 
 gulp.task('clean', function (cb) {
@@ -27,9 +30,18 @@ gulp.task('clean', function (cb) {
 });
 
 /**
+ * Compiles Jade
+ */
+gulp.task('jade', function () {
+  return gulp.src(src.views)
+      .pipe(jade())
+      .pipe(gulp.dest(dist.views))
+});
+
+/**
  * Compiles Less + sourcemaps
  */
-gulp.task('build', function () {
+gulp.task('less', function () {
   return combiner.obj([
     gulp.src(src.less),
     sourcemaps.init(),
@@ -43,14 +55,15 @@ gulp.task('build', function () {
 /**
  * Watches css changes
  */
-gulp.task('watch', ['build'], function () {
-  gulp.watch(src.less, ['build']);
+gulp.task('watch', ['less'], function () {
+  gulp.watch(src.less, ['less']);
+  gulp.watch(src.views, ['jade']);
 });
 
 /**
  * Compiles Less no sourcemaps
  */
-gulp.task('dist', ['clean'], function () {
+gulp.task('dist', ['clean', 'jade'], function () {
   return combiner.obj([
     gulp.src(src.less),
     less({ plugins: [clean, prefix] }),

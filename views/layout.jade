@@ -1,0 +1,54 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Apenode
+    meta(name='description', content='')
+    meta(name='author', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='//cloud.typography.com/7506032/804186/css/fonts.css')
+    link(rel='stylesheet', href='css/styles.css')
+    link(rel='icon', type='image/png', href='images/favicon.png')
+  body
+    .navbar
+      .container
+        a.navbar-brand(href='/')
+          img(src='images/branding.png', alt='apenode', width='98', height='24')
+        nav.u-pull-right
+          ul.navbar-nav
+            li
+              a(href='#') What is Apenode?
+            li
+              a(href='#') Industries
+            li
+              a(href='#') Use Cases
+            li
+              a(href='docs.html') Documentation
+            li
+              .navbar-form
+                a.button(href='#') Download
+
+    block content
+
+    footer.mashape-footer.mashape-footer-theme-dark
+      .mashape-footer-bar
+        .container
+          ul.mashape-footer-social
+            li
+              a.mf-ico-google(href='https://plus.google.com/+Mashape') Google+
+            li
+              a.mf-ico-facebook(href='https://www.facebook.com/Mashape') Facebook
+            li
+              a.mf-ico-twitter(href='https://twitter.com/mashape') Twitter
+            li
+              a.mf-ico-github(href='https://github.com/mashape') GitHub
+          span
+            | &#169;
+            strong
+              | 2015,
+              a(href='https://mashape.com') Mashape
+          span.mashape-footer-separator
+          a(href='http://www.mashape.com/terms') Terms
+          a(href='http://www.mashape.com/privacy') Privacy
+
+    block scripts
