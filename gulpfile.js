@@ -3,6 +3,7 @@
 var del = require('del');
 var gulp = require('gulp');
 var less = require('gulp-less');
+var combiner = require('stream-combiner2');
 var sourcemaps = require('gulp-sourcemaps');
 var less_clean = require('less-plugin-clean-css');
 var less_prefix = require('less-plugin-autoprefix');
@@ -19,7 +20,7 @@ var dist = {
 };
 
 gulp.task('clean', function (cb) {
-  del([dist.css], cb)
+  del([dist.css], cb);
 });
 
 /**
@@ -27,14 +28,13 @@ gulp.task('clean', function (cb) {
  */
 
 gulp.task('build', function () {
-  return gulp
-      .src(src.less)
-      .pipe(sourcemaps.init())
-      .pipe(less({
-        plugins: [clean, prefix]
-      }))
-      .pipe(sourcemaps.write(dist.css + '/maps'))
-      .pipe(gulp.dest(dist.css))
+  return combiner.obj([
+    gulp.src(src.less),
+    sourcemaps.init(),
+    less({ plugins: [clean, prefix] }),
+    sourcemaps.write(dist.css + '/maps'),
+    gulp.dest(dist.css)
+  ]).on('error', console.error.bind(console));
 });
 
 /**
@@ -42,7 +42,7 @@ gulp.task('build', function () {
  */
 
 gulp.task('watch', ['build'], function () {
-  gulp.watch(src.less, ['build'])
+  gulp.watch(src.less, ['build']);
 });
 
 /**
@@ -50,12 +50,11 @@ gulp.task('watch', ['build'], function () {
  */
 
 gulp.task('dist', ['clean'], function () {
-  return gulp
-      .src(src.less)
-      .pipe(less({
-        plugins: [clean, prefix]
-      }))
-      .pipe(gulp.dest(dist.css))
+  return combiner.obj([
+    gulp.src(src.less),
+    less({ plugins: [clean, prefix] }),
+    gulp.dest(dist.css)
+    ]).on('error', console.error.bind(console));
 });
 
 gulp.task('default', ['watch']);
