@@ -55,7 +55,7 @@ gulp.task('less', function () {
 /**
  * Watches css changes
  */
-gulp.task('watch', ['less'], function () {
+gulp.task('watch', ['jade', 'less'], function () {
   gulp.watch(src.less, ['less']);
   gulp.watch(src.views, ['jade']);
 });
