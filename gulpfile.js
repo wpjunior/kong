@@ -26,7 +26,7 @@ var dist = {
 };
 
 gulp.task('clean', function (cb) {
-  del([dist.css], cb);
+  del([dist.css, dist.views + '*.html'], cb);
 });
 
 /**
@@ -34,8 +34,8 @@ gulp.task('clean', function (cb) {
  */
 gulp.task('jade', function () {
   return gulp.src(src.views)
-      .pipe(jade())
-      .pipe(gulp.dest(dist.views))
+    .pipe(jade())
+    .pipe(gulp.dest(dist.views));
 });
 
 /**
