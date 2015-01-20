@@ -4,9 +4,11 @@ Welcome to the Apenode official documentation, that will help you setting up the
 
 If you have more specific questions about the Apenode, please join our chat at #apenode and the project maintainers will be happy to answer to your questions.
 
+The Apenode is trusted by more than 100,000 developers, processing billions of requests for more than 10,000 public and private APIs around the world.
+
 #What is the Apenode?
 
-The Apenode is an open-source enterprise API Layer (also called *API Gateway* or *API Middleware*) that sits in front of any RESTful API and provides additional functionalities like authentication, analytics, monitoring, rate limiting and billing without changing the source code of the API itself. It is a foundamental technology that any API provider should leverage to deliver better APIs without reinventing the wheel. The Apenode is trusted by more than 100,000 developers for more than 10,000 public and private APIs.
+The Apenode is an open-source enterprise API Layer (also called *API Gateway* or *API Middleware*) that sits in front of any RESTful API and provides additional functionalities like authentication, analytics, monitoring, rate limiting and billing without changing the source code of the API itself. It is a foundamental technology that any API provider should leverage to deliver better APIs without reinventing the wheel.
 
 This means that every request being made to the API will hit the Apenode first, and then it will be proxied to the final API with an average processing latency that is  lower than **8ms** per request. Because the Apenode can be easily scaled up and down there is no limit to the amount of requests it can serve, up to billions of HTTP requests.
 
@@ -41,7 +43,9 @@ In order to work, the Apenode needs to have both these components set up and ope
 
 The API Plugin Server is the component that will actually process the API requests and execute the configured plugins to provide additional functionalities.
 
-The proxy server also offers an internal API that it can be used to configure the Apenode, create new users, and other operations. This makes it extremely easy to integrate the Apenode with existing systems, and it also enables beautiful user experiences, for example like implementing an api key provisioning flow on a website.
+The proxy server also offers an internal API that it can be used to configure the Apenode, create new users, and other operations. This makes it extremely easy to integrate the Apenode with existing systems, and it also enables beautiful user experiences: for example when implementing an api key provisioning flow, a website can directly communicate with the Apenode for the credentials provisioning.
+
+192.
 
 
 
