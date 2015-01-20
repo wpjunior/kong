@@ -45,11 +45,6 @@ The API Plugin Server is the component that will actually process the API reques
 
 The proxy server also offers an internal API that it can be used to configure the Apenode, create new users, and other operations. This makes it extremely easy to integrate the Apenode with existing systems, and it also enables beautiful user experiences: for example when implementing an api key provisioning flow, a website can directly communicate with the Apenode for the credentials provisioning.
 
-192.
-
-
-
-
 
 
 
