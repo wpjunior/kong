@@ -1,3 +1,5 @@
+block vars
+
 doctype html
 html(lang='en')
   head
@@ -14,8 +16,8 @@ html(lang='en')
       .container
         a.navbar-brand(href='/')
           img(src='images/branding.png', alt='apenode', width='98', height='24')
-        nav.u-pull-right
-          ul.navbar-nav
+        nav.navbar-nav
+          ul
             li
               a(href='#') What is Apenode?
             li
@@ -23,7 +25,7 @@ html(lang='en')
             li
               a(href='#') Use Cases
             li
-              a(href='docs.html') Documentation
+              a(href='overview.html') Documentation
             li
               .navbar-form
                 a.button(href='#') Download

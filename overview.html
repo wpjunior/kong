@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Apenode</title><meta name="description" content=""><meta name="author" content=""><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="//cloud.typography.com/7506032/804186/css/fonts.css"><link rel="stylesheet" href="css/styles.css"><link rel="icon" type="image/png" href="images/favicon.png"></head><body><div class="navbar"><div class="container"><a href="/" class="navbar-brand"><img src="images/branding.png" alt="apenode" width="98" height="24"></a><nav class="navbar-nav"><ul><li><a href="#">What is Apenode?</a></li><li><a href="#">Industries</a></li><li><a href="#">Use Cases</a></li><li><a href="overview.html">Documentation</a></li><li><div class="navbar-form"><a href="#" class="button">Download</a></div></li></ul></nav></div></div><div class="page"><header class="page-header"><div class="container"><div class="page-header-icon"><img src="images/icons/01-icn-documentation.svg" alt=""></div><div class="page-header-title"><h2>Documentation</h2><p>Masterize Apenode in one hour</p></div></div></header><div class="container"><aside class="page-navigation"><nav><h5>Getting started</h5><ul><li><a href="/overview.html" class="active">Overview</a></li><li><a href="#">Run it for the first time</a></li></ul></nav><nav><h5>Advanced</h5><ul><li><a href="#">Configuration</a></li><li><a href="#">Datastores</a></li><li><a href="#">Plugins</a></li><li><a href="#">Scalability</a></li></ul></nav><nav><h5>Support</h5><ul><li><a href="#">Open Source</a></li><li><a href="#">Enterprise</a></li></ul></nav><nav><h5>Internal API endpoints</h5><ul><li><a href="#">API object</a><ul><li><a href="#">Overview</a></li><li><a href="#">Create API</a></li><li><a href="#">Get API</a></li><li><a href="#">List APIs</a></li><li><a href="#">Delete API</a></li></ul></li><li><a href="#">Account Object</a><ul><li><a href="#">Overview</a></li><li><a href="#">Create Account</a></li><li><a href="#">List Accounts</a></li><li><a href="#">Delete Account</a></li></ul></li><li><a href="#">Application Object</a><ul><li><a href="#">Overview</a></li><li><a href="#">Create Application</a></li><li><a href="#">Get Application</a></li><li><a href="#">List Applications</a></li><li><a href="#">Delete Application</a></li></ul></li></ul></nav></aside><div class="page-container"><div class="page-content"><h1>Overview</h1>
+
+<p>Welcome to the Apenode official documentation, that will help you setting up the Apenode, configuring it and operating it. We reccomend reading every section of this document to have a full understanding of the project.</p>
+
+<p>If you have more specific questions about the Apenode, please join our chat at #apenode and the project maintainers will be happy to answer to your questions.</p>
+
+<p>The Apenode is trusted by more than 100,000 developers, processing billions of requests for more than 10,000 public and private APIs around the world.</p>
+
+<h1>What is the Apenode?</h1>
+
+<p>The Apenode is an open-source enterprise API Layer (also called <em>API Gateway</em> or <em>API Middleware</em>) that sits in front of any RESTful API and provides additional functionalities like authentication, analytics, monitoring, rate limiting and billing without changing the source code of the API itself. It is a foundamental technology that any API provider should leverage to deliver better APIs without reinventing the wheel.</p>
+
+<p>This means that every request being made to the API will hit the Apenode first, and then it will be proxied to the final API with an average processing latency that is  lower than <strong>8ms</strong> per request. Because the Apenode can be easily scaled up and down there is no limit to the amount of requests it can serve, up to billions of HTTP requests.</p>
+
+<p>[[IMAGE OF ARCHITECTURE, SHOWING CLIENT, APENODE AND API]]</p>
+
+<p>The Apenode has been built following three foundamental principles:</p>
+
+<ul><li><strong>Scalable</strong>: it&#39;s easy to scale horizontally just by adding more machines. It can virtually handle any load.</li><li><strong>Customizable</strong>: it can be expanded by adding new features, and it&#39;s configurable by consuming an open internal API.</li><li><strong>Runs on any infrastructure</strong>: It can run in any cloud or on-premise environment, in a single or multi-datacenter setup, for any kind of API: public, private and partner APIs.</li></ul>
+
+<h1>Plugins</h1>
+
+<p>All the functionalities provided by the Apenode, like authentication, rate-limiting, billing, are implemented as <strong>plugins</strong>. Thus, there is an authentication plugin, a rate-limiting plugin, and a billing plugin among the others. You can decide which plugin to install, and you can customize the Apenode by creating new plugins.</p>
+
+<p>In a way the Apenode can be considered as a container that executes plugins that provide additional functionalities to the underlying API.</p>
+
+<p>By having plugins, the Apenode can be extended to fit any custom need or integration challenge. For example, if you need to integrate the API user authentication with a third-party enterprise security system, that would be implemented in a dedicated plugin that will run on every API request.</p>
+
+<p>A plugin can hook into the life-cycle of both requests and responses, with the additional possibility of changing their content, thus allowing great customization. For example, a SOAP to REST converter plugin is totally possible with the Apenode.</p>
+
+<h1>How does it work?</h1>
+
+<p>The Apenode is made of two different components, that are easy to set up and to scale independently:</p>
+
+<ul><li>The <strong>API Plugin Server</strong>, based on a modified version of the widely adopted <strong>nginx</strong> server, that processes the API requests.</li><li>An underlying <strong>Datastore</strong> for storing operational data, <strong>Apache Cassandra</strong>, which is being used by major companies like Netflix, Comcast or Facebook and it&#39;s known for being highly scalable.</li></ul>
+
+<p>In order to work, the Apenode needs to have both these components set up and operational. A typical Apenode installation can be summed up with the following picture:</p>
+
+<p>[[IMAGE OF ARCHITECTURE, SHOWING A DETAILED PROXY SERVER, CASSANDRA, ETC]]</p>
+
+<p>The API Plugin Server is the component that will actually process the API requests and execute the configured plugins to provide additional functionalities.</p>
+
+<p>The proxy server also offers an internal API that it can be used to configure the Apenode, create new users, and other operations. This makes it extremely easy to integrate the Apenode with existing systems, and it also enables beautiful user experiences: for example when implementing an api key provisioning flow, a website can directly communicate with the Apenode for the credentials provisioning.</p>
+
+<p>192.</p></div></div></div></div><footer class="mashape-footer mashape-footer-theme-light"><div class="mashape-footer-bar"><div class="container"><ul class="mashape-footer-social"><li><a href="https://plus.google.com/+Mashape" class="mf-ico-google">Google+</a></li><li><a href="https://www.facebook.com/Mashape" class="mf-ico-facebook">Facebook</a></li><li><a href="https://twitter.com/mashape" class="mf-ico-twitter">Twitter</a></li><li><a href="https://github.com/mashape" class="mf-ico-github">GitHub</a></li></ul><span>&copy; <strong>2015</strong>, <a href="https://mashape.com">Mashape</a></span><span class="mashape-footer-separator"></span><a href="http://www.mashape.com/terms">Terms</a><a href="http://www.mashape.com/privacy">Privacy</a></div></div></footer></body></html>
