@@ -5,25 +5,29 @@ var gulp = require('gulp');
 var less = require('gulp-less');
 var jade = require('gulp-jade');
 var uncss = require('gulp-uncss');
+var glob = require('glob');
 var combiner = require('stream-combiner2');
 var minifycss = require('gulp-minify-css');
 var sourcemaps = require('gulp-sourcemaps');
 var less_clean = require('less-plugin-clean-css');
 var less_prefix = require('less-plugin-autoprefix');
 
-var uncss = uncss({ html: ['index.html', 'docs.html'] });
-var clean = new less_clean({ advanced: true });
-var prefix = new less_prefix({ browsers: ['last 2 versions'] });
-
 var src = {
   less: 'styles/styles.less',
-  views: ['./views/**/*.jade', '!./views/layout.jade']
+  views: ['./views/**/*.jade', '!./views/*layout.jade']
 };
 
 var dist = {
   css: 'css/',
   views: './'
 };
+
+var clean = new less_clean({ advanced: true });
+var prefix = new less_prefix({ browsers: ['last 2 versions'] });
+
+uncss = uncss({
+  html: glob.sync(dist.views + '*.html')
+});
 
 gulp.task('clean', function (cb) {
   del([dist.css, dist.views + '*.html'], cb);
@@ -34,8 +38,8 @@ gulp.task('clean', function (cb) {
  */
 gulp.task('jade', function () {
   return gulp.src(src.views)
-    .pipe(jade())
-    .pipe(gulp.dest(dist.views));
+      .pipe(jade())
+      .pipe(gulp.dest(dist.views));
 });
 
 /**
