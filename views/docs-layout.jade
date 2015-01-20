@@ -11,70 +11,19 @@ block content
           p Masterize Apenode in one hour
     .container
       aside.page-navigation
-        nav
-          h5 getting started
-          ul
-            li
-              a.active(href='overview.html') Overview
-            li
-              a(href='#') Run it for the first time
-          h5 advanced
-          ul
-            li
-              a(href='#') Configuration
-            li
-              a(href='#') Datastores
-            li
-              a(href='#') Plugins
-            li
-              a(href='#') Scalability
-          h5 support
-          ul
-            li
-              a(href='#') Open Source
-            li
-              a(href='#') Enterprise
-          h5 internal api endpoints
-          ul
-            li
-              a(href='#') API object
-              ul
+        each groupItems, groupTitle in menuItems
+          nav
+            h5= groupTitle
+            ul
+              each item in groupItems
                 li
-                  a(href='#') Overview
-                li
-                  a(href='#') Create API
-                li
-                  a(href='#') Get API
-                li
-                  a(href='#') List APIs
-                li
-                  a(href='#') Delete API
-            li
-              a(href='#') Account Object
-              ul
-                li
-                  a(href='#') Overview
-                li
-                  a(href='#') Create Account
-                li
-                  a(href='#') Get Account
-                li
-                  a(href='#') List Accounts
-                li
-                  a(href='#') Delete Account
-            li
-              a(href='#') Application Object
-              ul
-                li
-                  a(href='#') Overview
-                li
-                  a(href='#') Create Application
-                li
-                  a(href='#') Get Application
-                li
-                  a(href='#') List Applications
-                li
-                  a(href='#') Delete Application
+                  a(href=item.url, class="#{item.text === activeMenuItem ? 'active' : ''}")= item.text
+
+                  if item.items
+                    ul
+                      each subitem in item.items
+                        li
+                          a(href=subitem.url)= subitem.text
 
       .page-container
         .page-content

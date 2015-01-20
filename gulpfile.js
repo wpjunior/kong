@@ -38,7 +38,11 @@ gulp.task('clean', function (cb) {
  */
 gulp.task('jade', function () {
   return gulp.src(src.views)
-      .pipe(jade())
+      .pipe(jade({
+        locals: {
+          menuItems: require('./views/menu-items')
+        }
+      }))
       .pipe(gulp.dest(dist.views));
 });
 
