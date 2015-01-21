@@ -132,3 +132,10 @@
 .mashape-footer-theme-light .mashape-footer-bar .mashape-footer-separator {
     background-color: #d9dde1;
 }
+
+@media (max-width: 550px) {
+    .mashape-footer-bar .mashape-footer-separator,
+    .mashape-footer-bar .container > a {
+        display: none;
+    }
+}
