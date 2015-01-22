@@ -737,8 +737,9 @@ nav a:active {
 }
 
 @media (min-width:550px) and (max-width:750px) {
-  .features-list:not(.learn-more) img {
-    width: 90%;
+  .features-list li.three.columns {
+    width: 45%;
+    margin: 0;
   }
 
   .powered-list .list-inline .powered-list-item:not(.vip) {
