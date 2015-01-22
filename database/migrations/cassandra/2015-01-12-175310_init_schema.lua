@@ -81,6 +81,11 @@ local Migration = {
       PRIMARY KEY (id)
     );
 
+    CREATE INDEX IF NOT EXISTS ON jobs(created_at);
+    CREATE INDEX IF NOT EXISTS ON jobs(stopped);
+    CREATE INDEX IF NOT EXISTS ON jobs(active);
+    CREATE INDEX IF NOT EXISTS ON jobs(name);
+
   ]],
 
   down = [[

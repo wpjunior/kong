@@ -21,12 +21,12 @@ function _M.deserialize(schema, entity)
       elseif entity[k] ~= nil and v.type == "string" then
         entity[k] = tostring(entity[k])
       elseif entity[k] ~= nil and v.type == "boolean" then
-        if entity[k] == 1 then
+        if entity[k] == 1 or entity[k] == true then
           entity[k] = true
-        elseif entity[k] == 0 then
+        elseif entity[k] == 0 or entity[k] == false then
           entity[k] = false
         else
-          error("Unknown boolean value")
+          error("Unknown boolean value ", entity[k])
         end
       end
     end

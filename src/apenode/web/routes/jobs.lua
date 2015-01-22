@@ -49,6 +49,7 @@ local function find_jobs(active, req, query_params)
   if err then
     return utils.show_error(500, err)
   end
+
   return utils.success(BaseController.render_list_response(req, data, total, page, size))
 end
 
@@ -56,6 +57,7 @@ function Jobs:new()
 
   app:post("/jobs/:plugin_name/start", function(self)
     local plugin = find_plugin(self.params.plugin_name)
+
     if plugin then
       local data, err = JobModel({
         name = plugin.name,

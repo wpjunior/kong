@@ -45,7 +45,7 @@ function BaseDao:update(entity)
   local query, values_to_bind = self:build_udpdate_query(entity, where_keys)
 
   -- Last '?' placeholder is the WHERE id = ?
-  table.insert(values_to_bind, cassandra.uuid(entity.id))
+  table.insert(values_to_bind, cassandra.uuid(where_keys.id))
 
   return self:_exec_stmt(query, values_to_bind)
 end
@@ -239,7 +239,7 @@ function BaseDao:_build_query_args(entity, update)
     table.insert(placeholders, "?")
 
     -- Build values to bind with special cassandra values on uuids and timestamps
-    if schema_field.type == "uuid" then
+    if schema_field.type == "id" then
       table.insert(values_to_bind, cassandra.uuid(v))
     elseif schema_field.type == "timestamp" then
       local created_at = v

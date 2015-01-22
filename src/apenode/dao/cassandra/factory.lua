@@ -22,9 +22,6 @@ function CassandraFactory:new(properties)
   self.migrations = Migrations(self)
   self._properties = properties
 
-  self._db = cassandra.new()
-  self._db:set_timeout(properties.timeout)
-
   self.apis = Apis(self._db, properties)
   self.metrics = Metrics(self._db, properties)
   self.plugins = Plugins(self._db, properties)
@@ -71,10 +68,14 @@ end
 -- Utilities
 --
 function CassandraFactory:prepare()
- -- TODO
+ -- Don't implement this method, because it's being called in the "init" nginx handler
+ -- that doesn't have access to TCP
 end
 
 function CassandraFactory:execute(stmt)
+  self._db = cassandra.new()
+  self._db:set_timeout(properties.timeout)
+
   local connected, err = self._db:connect(self._properties.host, self._properties.port)
   if not connected then
     error(err)
