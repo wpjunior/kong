@@ -28,9 +28,8 @@ function RateLimitingHandler:access(conf)
   access.execute(conf)
 end
 
-function RateLimitingHandler:job()
-  RateLimitingHandler.super.job(self)
-  job.execute()
+function RateLimitingHandler.job(premature, job_id)
+  job.execute(job_id)
 end
 
 return RateLimitingHandler

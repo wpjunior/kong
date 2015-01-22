@@ -5,7 +5,8 @@ local configuration, dao_factory = utils.load_configuration_and_dao(configuratio
 local daos = {
   api = dao_factory.apis,
   account = dao_factory.accounts,
-  application = dao_factory.applications
+  application = dao_factory.applications,
+  jobs = dao_factory.jobs
 }
 
 describe("DetailedDaos", function()
@@ -18,6 +19,47 @@ describe("DetailedDaos", function()
   teardown(function()
     dao_factory:drop()
     dao_factory:close()
+  end)
+
+  describe("JobsDao", function()
+
+    it("should save", function()
+      local inserted, err = dao_factory.jobs:insert_or_update({
+        name = "test_job",
+        active = true
+      })
+      assert.falsy(err)
+      assert.truthy(inserted)
+      assert.truthy(inserted.name)
+      assert.truthy(inserted.active)
+    end)
+    it("should find", function()
+      local result, err = dao_factory.jobs:find_one {
+        name = "test_job"
+      }
+
+      assert.falsy(err)
+      assert.are.same("test_job", result.name)
+      assert.are.same(true, result.active)
+    end)
+    it("should update", function()
+      local result, err = dao_factory.jobs:find_one {
+        name = "test_job"
+      }
+      assert.are.same(true, result.active)
+
+      result.active = false
+
+      local result, err = dao_factory.jobs:update(result)
+      assert.falsy(err)
+      assert.are.same(1, result)
+
+      local result, err = dao_factory.jobs:find_one {
+        name = "test_job"
+      }
+      assert.are.same(false, result.active)
+    end)
+
   end)
 
   describe("MetricsDao", function()

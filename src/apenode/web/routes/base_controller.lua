@@ -15,7 +15,7 @@ local function remove_private_properties(entity)
   return entity
 end
 
-local function render_list_response(req, data, total, page, size)
+function BaseController.render_list_response(req, data, total, page, size)
   if data then
     for i,v in ipairs(data) do
       data[i] = remove_private_properties(v)
@@ -43,7 +43,7 @@ local function decode_json(json, out)
   out = cjson.decode(json)
 end
 
-local function parse_params(model, params)
+function BaseController.parse_params(model, params)
   for k,v in pairs(params) do
     if model._SCHEMA[k] and model._SCHEMA[k].type == "table" then
       if not v or stringy.strip(v) == "" then
@@ -64,7 +64,7 @@ end
 
 function BaseController:new(model)
   app:post("/" .. model._COLLECTION .. "/", function(self)
-    local params = parse_params(model, self.params)
+    local params = BaseController.parse_params(model, self.params)
 
     local data, err = model(params, dao):save()
     if err then
@@ -75,7 +75,7 @@ function BaseController:new(model)
   end)
 
   app:get("/" .. model._COLLECTION .. "/", function(self)
-    local params = parse_params(model, self.params)
+    local params = BaseController.parse_params(model, self.params)
 
     local page = 1
     local size = 10
@@ -96,7 +96,7 @@ function BaseController:new(model)
     if err then
       return utils.show_error(500, err)
     end
-    return utils.success(render_list_response(self.req, data, total, page, size))
+    return utils.success(BaseController.render_list_response(self.req, data, total, page, size))
   end)
 
   app:get("/" .. model._COLLECTION .. "/:id", function(self)
@@ -133,7 +133,7 @@ function BaseController:new(model)
     end
 
     if data then
-      local params = parse_params(model, self.params)
+      local params = BaseController.parse_params(model, self.params)
       for k,v in pairs(self.params) do
         data[k] = v
       end

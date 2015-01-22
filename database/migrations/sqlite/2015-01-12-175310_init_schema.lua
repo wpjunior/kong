@@ -51,6 +51,14 @@ local Migration = {
       FOREIGN KEY(api_id) REFERENCES apis(id),
       FOREIGN KEY(application_id) REFERENCES applications(id)
     );
+
+    CREATE TABLE IF NOT EXISTS jobs(
+      id INTEGER PRIMARY KEY,
+      name TEXT,
+      active INTEGER,
+      stopped INTEGER,
+      created_at TIMESTAMP
+    );
   ]],
 
   down = [[

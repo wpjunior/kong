@@ -10,6 +10,7 @@ local Metrics = require "apenode.dao.sqlite.metrics"
 local Plugins = require "apenode.dao.sqlite.plugins"
 local Accounts = require "apenode.dao.sqlite.accounts"
 local Applications = require "apenode.dao.sqlite.applications"
+local Jobs = require "apenode.dao.sqlite.jobs"
 
 local SQLiteFactory = Object:extend()
 
@@ -36,6 +37,7 @@ function SQLiteFactory:new(properties, no_prepare)
   self.plugins = Plugins(self._db)
   self.accounts = Accounts(self._db)
   self.applications = Applications(self._db)
+  self.jobs = Jobs(self._db)
 end
 
 --
@@ -66,6 +68,7 @@ function SQLiteFactory:drop()
   self:execute("DELETE FROM plugins")
   self:execute("DELETE FROM accounts")
   self:execute("DELETE FROM applications")
+  self:execute("DELETE FROM jobs")
 end
 
 --
@@ -87,6 +90,7 @@ function SQLiteFactory:close()
   self.plugins:finalize()
   self.accounts:finalize()
   self.applications:finalize()
+  self.jobs:finalize()
 
   self._db:close()
 end

@@ -10,6 +10,7 @@ local Metrics = require "apenode.dao.cassandra.metrics"
 local Plugins = require "apenode.dao.cassandra.plugins"
 local Accounts = require "apenode.dao.cassandra.accounts"
 local Applications = require "apenode.dao.cassandra.applications"
+local Jobs = require "apenode.dao.cassandra.jobs"
 
 local CassandraFactory = Object:extend()
 
@@ -29,6 +30,7 @@ function CassandraFactory:new(properties)
   self.plugins = Plugins(self._db, properties)
   self.accounts = Accounts(self._db, properties)
   self.applications = Applications(self._db, properties)
+  self.jobs = Jobs(self._db, properties)
 end
 
 --
@@ -61,6 +63,7 @@ function CassandraFactory:drop()
     TRUNCATE plugins;
     TRUNCATE accounts;
     TRUNCATE applications;
+    TRUNCATE jobs;
   ]]
 end
 

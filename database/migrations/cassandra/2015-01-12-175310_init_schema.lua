@@ -72,6 +72,15 @@ local Migration = {
       PRIMARY KEY ((api_id, application_id, origin_ip, name, period, timestamp))
     );
 
+    CREATE TABLE IF NOT EXISTS jobs(
+      id uuid,
+      name text,
+      active boolean,
+      stopped boolean,
+      created_at timestamp,
+      PRIMARY KEY (id)
+    );
+
   ]],
 
   down = [[

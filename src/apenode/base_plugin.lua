@@ -23,8 +23,4 @@ function BasePlugin:log()
   ngx.log(ngx.DEBUG, " executing plugin " .. self._name .. ": log")
 end
 
-function BasePlugin:job()
-  ngx.log(ngx.DEBUG, " executing job " .. self._name .. ": job")
-end
-
 return BasePlugin

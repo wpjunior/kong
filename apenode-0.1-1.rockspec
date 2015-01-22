@@ -43,6 +43,7 @@ build = {
     ["apenode.tools.migrations"] = "src/apenode/tools/migrations.lua",
 
     ["apenode.base_plugin"] = "src/apenode/base_plugin.lua",
+    ["apenode.base_job"] = "src/apenode/base_job.lua",
 
     ["apenode.core.handler"] = "src/apenode/core/handler.lua",
     ["apenode.core.access"] = "src/apenode/core/access.lua",
@@ -56,6 +57,7 @@ build = {
     ["apenode.dao.sqlite.metrics"] = "src/apenode/dao/sqlite/metrics.lua",
     ["apenode.dao.sqlite.plugins"] = "src/apenode/dao/sqlite/plugins.lua",
     ["apenode.dao.sqlite.accounts"] = "src/apenode/dao/sqlite/accounts.lua",
+    ["apenode.dao.sqlite.jobs"] = "src/apenode/dao/sqlite/jobs.lua",
     ["apenode.dao.sqlite.applications"] = "src/apenode/dao/sqlite/applications.lua",
 
     ["apenode.dao.cassandra.factory"] = "src/apenode/dao/cassandra/factory.lua",
@@ -64,6 +66,7 @@ build = {
     ["apenode.dao.cassandra.metrics"] = "src/apenode/dao/cassandra/metrics.lua",
     ["apenode.dao.cassandra.plugins"] = "src/apenode/dao/cassandra/plugins.lua",
     ["apenode.dao.cassandra.accounts"] = "src/apenode/dao/cassandra/accounts.lua",
+    ["apenode.dao.cassandra.jobs"] = "src/apenode/dao/cassandra/jobs.lua",
     ["apenode.dao.cassandra.applications"] = "src/apenode/dao/cassandra/applications.lua",
 
     ["apenode.models.base_model"] = "src/apenode/models/base_model.lua",
@@ -72,6 +75,7 @@ build = {
     ["apenode.models.application"] = "src/apenode/models/application.lua",
     ["apenode.models.metric"] = "src/apenode/models/metric.lua",
     ["apenode.models.plugin"] = "src/apenode/models/plugin.lua",
+    ["apenode.models.job"] = "src/apenode/models/job.lua",
 
     ["apenode.plugins.authentication.handler"] = "src/apenode/plugins/authentication/handler.lua",
     ["apenode.plugins.authentication.access"] = "src/apenode/plugins/authentication/access.lua",
