@@ -16,7 +16,11 @@ html(lang='en')
       .container
         a.navbar-brand(href='/')
           img(src='images/branding.png', alt='apenode', width='98', height='24')
-        nav.navbar-nav
+        button.navbar-toggle(data-toggle='collapse', data-target='#navbar', aria-expanded='true', aria-controls='navbar')
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        nav.navbar-nav#navbar
           ul
             li
               a(href='#') What is Apenode?
@@ -48,5 +52,14 @@ html(lang='en')
           span.mashape-footer-separator
           a(href='http://www.mashape.com/terms') Terms
           a(href='http://www.mashape.com/privacy') Privacy
+
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+    script.
+      (function ($) {
+        $('.navbar-toggle').on('click', function () {
+          var $navbar = $($(this).data('target'));
+          $navbar.slideToggle(150);
+        });
+      }(jQuery));
 
     block scripts
