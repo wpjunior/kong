@@ -4,7 +4,7 @@ utils = require "apenode.tools.utils"
 local PluginModel = require "apenode.models.plugin"
 
 -- Define the plugins to load here, in the appropriate order
-local plugins = {}
+plugins = {}
 
 local _M = {}
 

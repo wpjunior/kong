@@ -81,12 +81,14 @@ build = {
 
     ["apenode.plugins.ratelimiting.handler"] = "src/apenode/plugins/ratelimiting/handler.lua",
     ["apenode.plugins.ratelimiting.access"] = "src/apenode/plugins/ratelimiting/access.lua",
+    ["apenode.plugins.ratelimiting.job"] = "src/apenode/plugins/ratelimiting/job.lua",
 
     ["apenode.web.app"] = "src/apenode/web/app.lua",
     ["apenode.web.routes.accounts"] = "src/apenode/web/routes/accounts.lua",
     ["apenode.web.routes.apis"] = "src/apenode/web/routes/apis.lua",
     ["apenode.web.routes.applications"] = "src/apenode/web/routes/applications.lua",
     ["apenode.web.routes.plugins"] = "src/apenode/web/routes/plugins.lua",
+    ["apenode.web.routes.jobs"] = "src/apenode/web/routes/jobs.lua",
     ["apenode.web.routes.base_controller"] = "src/apenode/web/routes/base_controller.lua"
   },
   copy_directories = { "src/apenode/web/admin", "src/apenode/web/static" },

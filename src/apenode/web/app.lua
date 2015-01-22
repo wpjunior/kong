@@ -5,6 +5,7 @@ local Apis = require "apenode.web.routes.apis"
 local Plugins = require "apenode.web.routes.plugins"
 local Accounts = require "apenode.web.routes.accounts"
 local Applications = require "apenode.web.routes.applications"
+local Jobs = require "apenode.web.routes.jobs"
 
 app = lapis.Application()
 
@@ -24,5 +25,6 @@ Apis()
 Accounts()
 Applications()
 Plugins()
+Jobs()
 
 return app

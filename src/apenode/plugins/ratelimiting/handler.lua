@@ -2,6 +2,7 @@
 
 local BasePlugin = require "apenode.base_plugin"
 local access = require "apenode.plugins.ratelimiting.access"
+local job = require "apenode.plugins.ratelimiting.job"
 
 local function check_period(v)
   if v == "second" or v == "minute" or v == "hour" or v == "day" or v == "day" or v == "month" or v == "year" then
@@ -25,6 +26,11 @@ end
 function RateLimitingHandler:access(conf)
   RateLimitingHandler.super.access(self)
   access.execute(conf)
+end
+
+function RateLimitingHandler:job()
+  RateLimitingHandler.super.job(self)
+  job.execute()
 end
 
 return RateLimitingHandler
