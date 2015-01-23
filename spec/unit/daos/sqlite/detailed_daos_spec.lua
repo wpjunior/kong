@@ -143,19 +143,32 @@ describe("DetailedDaos", function()
     end)
 
     describe("#delete()", function()
-      it("should delete an existing metric", function()
-        local count, err = dao_factory.metrics:delete(1, 1, nil, "new_metric_1", 123, "second")
+      it("should delete old second metrics", function()
+        local inserted, err = dao_factory.metrics:increment(1, 1, nil, "new_metric_2", 123, "year")
         assert.falsy(err)
-        assert.are.same(1, count)
-        local result, err = dao_factory.metrics:find_one {
-          api_id = 1,
-          application_id = 1,
-          name = "new_metric_1",
+        assert.are.same(1, inserted.value)
+
+        local _, count, _ = dao_factory.metrics:find {
+          period = "second",
           timestamp = 123
         }
+        assert.are.same(4, count)
 
+        local res, err = dao_factory.metrics:delete_older_than(124, "second")
         assert.falsy(err)
-        assert.falsy(result)
+        assert.are.same(4, res)
+
+        local _, count, _ = dao_factory.metrics:find {
+          period = "second",
+          timestamp = 123
+        }
+        assert.are.same(0, count)
+
+        local _, count, _ = dao_factory.metrics:find {
+          period = "year",
+          timestamp = 123
+        }
+        assert.are.same(1, count)
       end)
     end)
 

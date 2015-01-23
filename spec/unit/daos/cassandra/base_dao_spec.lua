@@ -1,6 +1,6 @@
 local utils = require "apenode.tools.utils"
 local configuration = require "spec.unit.daos.cassandra.configuration"
-local JobModel = require "apenode.models.job"
+local MetricModel = require "apenode.models.metric"
 
 local configuration, dao_factory = utils.load_configuration_and_dao(configuration)
 
@@ -16,16 +16,24 @@ describe("BaseDao", function()
   end)
 
   describe("", function()
-    local job, err = JobModel.find_one({id="07f7d9c6-bb02-4287-c2e6-bf5227c8cb7b"}, dao_factory);
-    if err then
-      ngx.log(ngx.ERR, "Failed to get the job", err)
-    else
-      job.active = false
-      local res, err = job:update()
-      if err then
-        ngx.log(ngx.ERR, "Failed to update the job", err)
-      end
-    end
+    it("should work", function()
+
+      --[[
+      local res, err = dao_factory.metrics:delete_older_than(1521977435798, "second")
+      local inspect = require "inspect"
+      print(inspect(res))
+      print(inspect(err))
+      --[[
+      local res, err = dao_factory.metrics:increment("4d924084-1adb-40a5-c042-63b19db425d2",
+                                                          "4d924084-1adb-40a5-c042-63b19db425d2",
+                                                          nil,
+                                                          "new_metric_2",
+                                                          1421977435798,
+                                                          "second")
+      assert.falsy(err)
+      assert.truthy(res)
+      --]]
+    end)
   end)
 
 end)

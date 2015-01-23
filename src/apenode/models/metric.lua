@@ -39,6 +39,14 @@ function Metric:new(t, dao_factory)
   return Metric.super.new(self, COLLECTION, SCHEMA, t, dao_factory)
 end
 
+function Metric:delete()
+  error("Not supported")
+end
+
+function Metric:update()
+  error("Not supported")
+end
+
 function Metric.find_one(args, dao_factory)
   local data, err =  Metric.super._find_one(args, dao_factory[COLLECTION])
   if data then
@@ -83,6 +91,11 @@ function Metric.increment(api_id, application_id, origin_ip, name, step, dao_fac
   else
     return true, nil
   end
+end
+
+function Metric.delete_older_than(timestamp, period)
+  local success, e = dao_factory[COLLECTION]:delete_older_than(timestamp, period)
+  return success, e
 end
 
 return Metric

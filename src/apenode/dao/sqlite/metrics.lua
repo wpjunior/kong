@@ -22,12 +22,9 @@ function Metrics:new(database)
           0) + :step
       );
     ]],
-    delete = [[
-      DELETE FROM metrics WHERE api_id = :api_id
-                            AND application_id = :application_id
-                            AND origin_ip = :origin_ip
-                            AND name = :name
-                            AND timestamp = :timestamp;
+    deleted_older_than = [[
+      DELETE FROM metrics WHERE period = :period
+                            AND timestamp < :timestamp
     ]]
   }
 end
@@ -55,29 +52,6 @@ function Metrics:find_one(args)
   })
 end
 
--- @override
-function Metrics:delete(api_id, application_id, origin_ip, name, timestamp)
-  -- application_id and origin_ip cannot be NULL, so...
-  local stmt_application_id = ""
-  local stmt_ip = ""
-
-  if origin_ip ~= nil then
-    stmt_ip = origin_ip
-  else
-    stmt_application_id = application_id
-  end
-
-  self.prepared_stmts.delete:bind_names {
-    api_id = api_id,
-    application_id = stmt_application_id,
-    origin_ip = stmt_ip,
-    name = name,
-    timestamp = timestamp
-  }
-
-  return self:exec_stmt_count_rows(self.prepared_stmts.delete)
-end
-
 function Metrics:increment(api_id, application_id, origin_ip, name, timestamp, period, step)
   if not step then step = 1 end
 
@@ -102,18 +76,20 @@ function Metrics:increment(api_id, application_id, origin_ip, name, timestamp, p
   }
 
   local count, err = self:exec_stmt_count_rows(self.prepared_stmts.increment)
-  if err then
-    return nil, err
+  if err or count == 0 then
+    return false, err
   end
 
-  return self:find_one {
-    api_id = api_id,
-    application_id = stmt_application_id,
-    origin_ip = stmt_ip,
-    name = name,
+  return true
+end
+
+function Metrics:delete_older_than(timestamp, period)
+  self.prepared_stmts.deleted_older_than:bind_names {
     period = period,
     timestamp = timestamp
   }
+
+  return self:exec_stmt_count_rows(self.prepared_stmts.deleted_older_than)
 end
 
 return Metrics

@@ -74,7 +74,7 @@ end
 
 function CassandraFactory:execute(stmt)
   self._db = cassandra.new()
-  self._db:set_timeout(properties.timeout)
+  self._db:set_timeout(self._properties.timeout)
 
   local connected, err = self._db:connect(self._properties.host, self._properties.port)
   if not connected then
