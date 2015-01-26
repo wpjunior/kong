@@ -29,6 +29,9 @@ uncss = uncss({
   html: glob.sync(dist.views + '*.html')
 });
 
+/**
+ * Cleans dist
+ */
 gulp.task('clean', function (cb) {
   del([dist.css, dist.views + '*.html'], cb);
 });
@@ -38,16 +41,16 @@ gulp.task('clean', function (cb) {
  */
 gulp.task('jade', function () {
   return gulp.src(src.views)
-      .pipe(jade({
-        locals: {
-          menuItems: require('./views/menu-items')
-        }
-      }))
-      .pipe(gulp.dest(dist.views));
+    .pipe(jade({
+      locals: {
+        menuItems: require('./views/menu-items')
+      }
+    }))
+    .pipe(gulp.dest(dist.views));
 });
 
 /**
- * Compiles Less + sourcemaps
+ * Compiles Less with sourcemaps
  */
 gulp.task('less', function () {
   return combiner.obj([
@@ -61,15 +64,15 @@ gulp.task('less', function () {
 });
 
 /**
- * Watches css changes
+ * Watches template changes
  */
 gulp.task('watch', ['jade', 'less'], function () {
-  gulp.watch(src.less, ['less']);
-  gulp.watch(src.views, ['jade']);
+  gulp.watch('styles/**/*', ['less']);
+  gulp.watch('views/**/*', ['jade']);
 });
 
 /**
- * Compiles Less no sourcemaps
+ * Compiles Jade + Less no sourcemaps
  */
 gulp.task('dist', ['clean', 'jade'], function () {
   return combiner.obj([
