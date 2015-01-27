@@ -62,5 +62,62 @@ Running the Apenode is very easy and will take a couple of minutes. To get start
 
 The Docker, Vagrant and AWS deployment options will already start a local Apache Cassandra instance. This is great for testing the Apenode, but once you go to production we reccomend having dedicated servers/instances for your Cassandra cluster.
 
+# Configuration
 
+Configuration here
+
+# Internal API Endpoints
+
+
+
+## API Object
+
+The API object describes an API that's being exposed by the Apenode. In order to do that the Apenode needs to know what is going to be the DNS address that will be pointing to the API, and what is the final target URL of the API where the requests will be proxied. The Apenode can expose more than one API.
+
+### Create API
+
+`POST /apis/`
+    
+**Parameters**
+
+* **name** - The name of the API
+* **public_dns** - The public DNS address that will be pointing to the API. For example: *myapi.com*
+* **target_url** - The base target URL that points to the API server, that will be used for proxying the requests. For example: *http://httpbin.org*
+
+**Returns**
+
+```json
+
+```
+
+### Retrieve API
+
+`GET /apis/{id}`
+    
+**Parameters**
+
+* **id** - The ID of the API to retrieve
+
+**Returns**
+
+```json
+
+```
+
+### List APIs
+
+`GET /apis/`
+    
+**Querystring Parameters**
+
+* id - The ID of the API
+* name - The name of the API
+* public_dns - The public DNS
+* target_url - The target URL
+
+**Returns**
+
+```json
+
+```
 
