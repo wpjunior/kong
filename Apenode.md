@@ -78,7 +78,7 @@ The API object describes an API that's being exposed by the Apenode. In order to
 
 `POST /apis/`
     
-**Parameters**
+**Form Parameters**
 
 * **name** - The name of the API
 * **public_dns** - The public DNS address that will be pointing to the API. For example: *myapi.com*
@@ -87,21 +87,35 @@ The API object describes an API that's being exposed by the Apenode. In order to
 **Returns**
 
 ```json
+HTTP 201 Created
 
+{
+    "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+    "name": "HttpBin",
+    "public_dns": "my.api.com",
+    "target_url": "http://httpbin.org",
+    "created_at": 1422386534
+}
 ```
 
 ### Retrieve API
 
 `GET /apis/{id}`
-    
-**Parameters**
 
 * **id** - The ID of the API to retrieve
 
 **Returns**
 
 ```json
+HTTP 200 OK
 
+{
+    "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+    "name": "HttpBin",
+    "public_dns": "my.api.com",
+    "target_url": "http://httpbin.org",
+    "created_at": 1422386534
+}
 ```
 
 ### List APIs
@@ -118,6 +132,74 @@ The API object describes an API that's being exposed by the Apenode. In order to
 **Returns**
 
 ```json
+HTTP 200 OK
 
+{
+    "total": 2,
+    "data": [
+        {
+            "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+            "name": "HttpBin",
+            "public_dns": "my.api.com",
+            "target_url": "http://httpbin.org",
+            "created_at": 1422386534
+        },
+        {
+            "id": "3f924084-1adb-40a5-c042-63b19db421a2",
+            "name": "PrivateAPI",
+            "public_dns": "internal.api.com",
+            "target_url": "http://private.api.com",
+            "created_at": 1422386585
+        }
+    ],
+    "next": "http://localhost:8001/apis/?limit=10&offset=4d924084-1adb-40a5-c042-63b19db421d1",
+    "previous": "http://localhost:8001/apis/?limit=10&offset=4d924084-1adb-40a5-c042-63b19db421d1"
+}
 ```
 
+### Update API
+
+`PUT /apis/{id}`
+    
+* **id** - The ID of the API to retrieve    
+    
+**Body**
+
+```json
+{
+    "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+    "name": "HttpBin2",
+    "public_dns": "my.api2.com",
+    "target_url": "http://httpbin2.org",
+    "created_at": 1422386534
+}
+```
+
+**Returns**
+
+```json
+HTTP 200 OK
+
+{
+    "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+    "name": "HttpBin2",
+    "public_dns": "my.api2.com",
+    "target_url": "http://httpbin2.org",
+    "created_at": 1422386534
+}
+```
+
+
+### Delete API
+
+`DELETE /apis/{id}`
+    
+**Parameters**
+
+* **id** - The ID of the API to delete
+
+**Returns**
+
+```json
+HTTP 204 NO CONTENT
+```
