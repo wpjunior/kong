@@ -1,7 +1,7 @@
 {
   "private": true,
   "version": "0.0.0",
-  "name": "apenode-web",
+  "name": "kong-web",
   "dependencies": {
     "del": "^1.1.1",
     "glob": "^4.3.5",
