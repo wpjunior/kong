@@ -161,7 +161,7 @@ HTTP 200 OK
 
 `PUT /apis/{id}`
     
-* **id** - The ID of the API to retrieve    
+* **id** - The ID of the API to update    
     
 **Body**
 
@@ -197,6 +197,398 @@ HTTP 200 OK
 **Parameters**
 
 * **id** - The ID of the API to delete
+
+**Returns**
+
+```json
+HTTP 204 NO CONTENT
+```
+
+## Account Object
+
+The Account object represents an account, or user, that can have one or more applications to consume the API objects. The Account object can be mapped with your database to keep consistency between the Apenode and your existing primary datastore.
+
+### Create Account
+
+`POST /accounts/`
+    
+**Form Parameters**
+
+* provider_id - This is an optional field where you can store an existing ID for an Account, useful to map an Apenode Account with a user in your existing database
+
+**Returns**
+
+```json
+HTTP 201 Created
+
+{
+    "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+    "provider_id": "abc123",
+    "created_at": 1422386534
+}
+```
+
+### Retrieve Account
+
+`GET /accounts/{id}`
+
+* **id** - The ID of the Account to retrieve
+
+**Returns**
+
+```json
+HTTP 200 OK
+
+{
+    "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+    "provider_id": "abc123",
+    "created_at": 1422386534
+}
+```
+
+### List Accounts
+
+`GET /accounts/`
+    
+**Querystring Parameters**
+
+* id - The ID of the Account
+* provider_id - The custom ID you set for the Account
+
+**Returns**
+
+```json
+HTTP 200 OK
+
+{
+    "total": 2,
+    "data": [
+        {
+            "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+            "provider_id": "abc123",
+            "created_at": 1422386534
+        },
+        {
+            "id": "3f924084-1adb-40a5-c042-63b19db421a2",
+            "provider_id": "def345",
+            "created_at": 1422386585
+        }
+    ],
+    "next": "http://localhost:8001/accounts/?limit=10&offset=4d924084-1adb-40a5-c042-63b19db421d1",
+    "previous": "http://localhost:8001/accounts/?limit=10&offset=4d924084-1adb-40a5-c042-63b19db421d1"
+}
+```
+
+### Update Account
+
+`PUT /accounts/{id}`
+    
+* **id** - The ID of the Account to update    
+    
+**Body**
+
+```json
+{
+    "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+    "provider_id": "updated_abc123",
+    "created_at": 1422386534
+}
+```
+
+**Returns**
+
+```json
+HTTP 200 OK
+
+{
+    "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+    "provider_id": "updated_abc123",
+    "created_at": 1422386534
+}
+```
+
+
+### Delete Account
+
+`DELETE /accounts/{id}`
+    
+**Parameters**
+
+* **id** - The ID of the Account to delete
+
+**Returns**
+
+```json
+HTTP 204 NO CONTENT
+```
+
+## Application Object
+
+The Application object represents an application belonging to an existing Account, and stores credentials for consuming the API objects. An Account can have more than one Application. An Application can represent one or more API keys, for example.
+
+### Create Application
+
+`POST /applications/`
+    
+**Form Parameters**
+
+* **account_id** - The Account ID of an existing Account whose this application belongs to.
+* **secret_key** - This is where the secret credential, like an API key or a password, will be stored. It is required.
+* public_key - Some authentication types require both a public and a secret key. This field is reserved for public keys, and can be empty if not used.
+
+**Returns**
+
+```json
+HTTP 201 Created
+
+{
+    "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+    "account_id": "5fd1z584-1adb-40a5-c042-63b19db49x21",
+    "secret_key": "SECRET-xaWijqenkln81jA",
+    "public_key": "PUBLIC-08landkl123sa",
+    "created_at": 1422386534
+}
+```
+
+### Retrieve Application
+
+`GET /applications/{id}`
+
+* **id** - The ID of the Application to retrieve
+
+**Returns**
+
+```json
+HTTP 200 OK
+
+{
+    "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+    "account_id": "5fd1z584-1adb-40a5-c042-63b19db49x21",
+    "secret_key": "SECRET-uajZwmSnLHBiRGb",
+    "public_key": "PUBLIC-74YmAGcirwkMdS6",
+    "created_at": 1422386534
+}
+```
+
+### List Applications
+
+`GET /accounts/`
+    
+**Querystring Parameters**
+
+* id - The ID of the Application
+* account_id - The ID of the Account
+* public_key - The public key to lookup
+* secret_key - The secret key to lookup
+
+**Returns**
+
+```json
+HTTP 200 OK
+
+{
+    "total": 2,
+    "data": [
+        {
+            "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+            "account_id": "5fd1z584-1adb-40a5-c042-63b19db49x21",
+            "secret_key": "SECRET-uajZwmSnLHBiRGb",
+            "public_key": "PUBLIC-74YmAGcirwkMdS6",
+            "created_at": 1422386534
+        },
+        {
+            "id": "3f924084-1adb-40a5-c042-63b19db421a2",
+            "account_id": "5fd1z584-1adb-40a5-c042-63b19db49x21",
+            "secret_key": "SECRET-4hvoM6xcHMLb6QK",
+            "public_key": "PUBLIC-y5JlLqGeswN2JcB",
+            "created_at": 1422386585
+        }
+    ],
+    "next": "http://localhost:8001/applications/?limit=10&offset=4d924084-1adb-40a5-c042-63b19db421d1",
+    "previous": "http://localhost:8001/applications/?limit=10&offset=4d924084-1adb-40a5-c042-63b19db421d1"
+}
+```
+
+### Update Application
+
+`PUT /applications/{id}`
+    
+* **id** - The ID of the Application to update    
+    
+**Body**
+
+```json
+{
+    "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+    "account_id": "5fd1z584-1adb-40a5-c042-63b19db49x21",
+    "secret_key": "UPDATED-SECRET-uajZwmSnLHBiRGb",
+    "public_key": "UPDATED-PUBLIC-74YmAGcirwkMdS6",
+    "created_at": 1422386534
+}
+```
+
+**Returns**
+
+```json
+HTTP 200 OK
+
+{
+    "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+    "account_id": "5fd1z584-1adb-40a5-c042-63b19db49x21",
+    "secret_key": "UPDATED-SECRET-uajZwmSnLHBiRGb",
+    "public_key": "UPDATED-PUBLIC-74YmAGcirwkMdS6",
+    "created_at": 1422386534
+}
+```
+
+
+### Delete Application
+
+`DELETE /applications/{id}`
+    
+**Parameters**
+
+* **id** - The ID of the Application to delete
+
+**Returns**
+
+```json
+HTTP 204 NO CONTENT
+```
+
+## Plugin Object
+
+The Plugin object represents a plugin that will be executed during the HTTP request/response workflow, and it's how the Apenode adds functionalities to an API, like Authentication or Rate Limiting. Plugins have a configuration `value` field that requires a JSON object representing the plugin configuration. By default creating a plugin and adding it to an API will enforce the same rules to every Application consuming the API. Sometimes the plugin configuration needs to be tuned to different values for some specific applications, for example when the Rate Limiting for an API is set to 20 requests per minute, but it needs to be increased for some specific Applications. In the Apenode it's possible to do that by creating a new Plugin object specifying the optional `application_id` field.
+
+### Create Plugin
+
+`POST /plugins/`
+    
+**Form Parameters**
+
+* **name** - The name of the Plugin that's going to be added. The Plugin should have already been installed in every Apenode server separately.
+* **api_id** - The API ID that the Plugin will target
+* **value** - The JSON configuration required for the Plugin. Each Plugin will have different configuration fields, so check the realtive Plugin documentation to know which fields you can set.
+* application_id - An optional Application ID to customize the Plugin behavior when an incoming request is being sent by the specified Application. This configuration takes precedence over the global API configuration.
+
+**Returns**
+
+```json
+HTTP 201 Created
+
+{
+    "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+    "api_id": "5fd1z584-1adb-40a5-c042-63b19db49x21",
+    "application_id": "a3dX2dh2-1adb-40a5-c042-63b19dbx83hF4",
+    "name": "ratelimiting",
+    "value": "{\"limit\": 20, \"period\":\"minute\"}",
+    "created_at": 1422386534
+}
+```
+
+### Retrieve Plugin
+
+`GET /plugins/{id}`
+
+* **id** - The ID of the Plugin to retrieve
+
+**Returns**
+
+```json
+HTTP 200 OK
+
+{
+    "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+    "api_id": "5fd1z584-1adb-40a5-c042-63b19db49x21",
+    "application_id": "a3dX2dh2-1adb-40a5-c042-63b19dbx83hF4",
+    "name": "ratelimiting",
+    "value": "{\"limit\": 20, \"period\":\"minute\"}",
+    "created_at": 1422386534
+}
+```
+
+### List Plugins
+
+`GET /accounts/`
+    
+**Querystring Parameters**
+
+* id - The ID of the Plugin
+* name - The name of the Plugin
+* api_id - The ID of the API
+* application_id - The ID of the Application
+
+**Returns**
+
+```json
+HTTP 200 OK
+
+{
+    "total": 2,
+    "data": [
+        {
+            "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+            "api_id": "5fd1z584-1adb-40a5-c042-63b19db49x21",
+            "name": "ratelimiting",
+            "value": "{\"limit\": 20, \"period\":\"minute\"}",
+            "created_at": 1422386534
+        },
+        {
+            "id": "3f924084-1adb-40a5-c042-63b19db421a2",
+            "api_id": "5fd1z584-1adb-40a5-c042-63b19db49x21",
+            "application_id": "a3dX2dh2-1adb-40a5-c042-63b19dbx83hF4",
+            "name": "ratelimiting",
+            "value": "{\"limit\": 300, \"period\":\"hour\"}",
+            "created_at": 1422386585
+        }
+    ],
+    "next": "http://localhost:8001/plugins/?limit=10&offset=4d924084-1adb-40a5-c042-63b19db421d1",
+    "previous": "http://localhost:8001/plugins/?limit=10&offset=4d924084-1adb-40a5-c042-63b19db421d1"
+}
+```
+
+### Update Plugin
+
+`PUT /plugins/{id}`
+    
+* **id** - The ID of the Plugin to update    
+    
+**Body**
+
+```json
+{
+    "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+    "api_id": "5fd1z584-1adb-40a5-c042-63b19db49x21",
+    "application_id": "a3dX2dh2-1adb-40a5-c042-63b19dbx83hF4",
+    "name": "ratelimiting",
+    "value": "{\"limit\": 50, \"period\":\"second\"}",
+    "created_at": 1422386534
+}
+```
+
+**Returns**
+
+```json
+HTTP 200 OK
+
+{
+    "id": "4d924084-1adb-40a5-c042-63b19db421d1",
+    "api_id": "5fd1z584-1adb-40a5-c042-63b19db49x21",
+    "application_id": "a3dX2dh2-1adb-40a5-c042-63b19dbx83hF4",
+    "name": "ratelimiting",
+    "value": "{\"limit\": 50, \"period\":\"second\"}",
+    "created_at": 1422386534
+}
+```
+
+
+### Delete Plugin
+
+`DELETE /plugins/{id}`
+    
+**Parameters**
+
+* **id** - The ID of the Plugin to delete
 
 **Returns**
 
