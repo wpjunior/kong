@@ -77,7 +77,7 @@ The API object describes an API that's being exposed by the Kong. In order to do
 ### Create API
 
 `POST /apis/`
-    
+
 **Form Parameters**
 
 * **name** - The name of the API
@@ -121,7 +121,7 @@ HTTP 200 OK
 ### List APIs
 
 `GET /apis/`
-    
+
 **Querystring Parameters**
 
 * id - The ID of the API
@@ -160,9 +160,9 @@ HTTP 200 OK
 ### Update API
 
 `PUT /apis/{id}`
-    
-* **id** - The ID of the API to update    
-    
+
+* **id** - The ID of the API to update
+
 **Body**
 
 ```json
@@ -193,7 +193,7 @@ HTTP 200 OK
 ### Delete API
 
 `DELETE /apis/{id}`
-    
+
 **Parameters**
 
 * **id** - The ID of the API to delete
@@ -206,15 +206,15 @@ HTTP 204 NO CONTENT
 
 ## Account Object
 
-The Account object represents an account, or user, that can have one or more applications to consume the API objects. The Account object can be mapped with your database to keep consistency between the Apenode and your existing primary datastore.
+The Account object represents an account, or user, that can have one or more applications to consume the API objects. The Account object can be mapped with your database to keep consistency between Kong and your existing primary datastore.
 
 ### Create Account
 
 `POST /accounts/`
-    
+
 **Form Parameters**
 
-* provider_id - This is an optional field where you can store an existing ID for an Account, useful to map an Apenode Account with a user in your existing database
+* provider_id - This is an optional field where you can store an existing ID for an Account, useful to map a Kong Account with a user in your existing database
 
 **Returns**
 
@@ -249,7 +249,7 @@ HTTP 200 OK
 ### List Accounts
 
 `GET /accounts/`
-    
+
 **Querystring Parameters**
 
 * id - The ID of the Account
@@ -282,9 +282,9 @@ HTTP 200 OK
 ### Update Account
 
 `PUT /accounts/{id}`
-    
-* **id** - The ID of the Account to update    
-    
+
+* **id** - The ID of the Account to update
+
 **Body**
 
 ```json
@@ -311,7 +311,7 @@ HTTP 200 OK
 ### Delete Account
 
 `DELETE /accounts/{id}`
-    
+
 **Parameters**
 
 * **id** - The ID of the Account to delete
@@ -329,7 +329,7 @@ The Application object represents an application belonging to an existing Accoun
 ### Create Application
 
 `POST /applications/`
-    
+
 **Form Parameters**
 
 * **account_id** - The Account ID of an existing Account whose this application belongs to.
@@ -373,7 +373,7 @@ HTTP 200 OK
 ### List Applications
 
 `GET /accounts/`
-    
+
 **Querystring Parameters**
 
 * id - The ID of the Application
@@ -412,9 +412,9 @@ HTTP 200 OK
 ### Update Application
 
 `PUT /applications/{id}`
-    
-* **id** - The ID of the Application to update    
-    
+
+* **id** - The ID of the Application to update
+
 **Body**
 
 ```json
@@ -445,7 +445,7 @@ HTTP 200 OK
 ### Delete Application
 
 `DELETE /applications/{id}`
-    
+
 **Parameters**
 
 * **id** - The ID of the Application to delete
@@ -458,15 +458,15 @@ HTTP 204 NO CONTENT
 
 ## Plugin Object
 
-The Plugin object represents a plugin that will be executed during the HTTP request/response workflow, and it's how the Apenode adds functionalities to an API, like Authentication or Rate Limiting. Plugins have a configuration `value` field that requires a JSON object representing the plugin configuration. By default creating a plugin and adding it to an API will enforce the same rules to every Application consuming the API. Sometimes the plugin configuration needs to be tuned to different values for some specific applications, for example when the Rate Limiting for an API is set to 20 requests per minute, but it needs to be increased for some specific Applications. In the Apenode it's possible to do that by creating a new Plugin object specifying the optional `application_id` field.
+The Plugin object represents a plugin that will be executed during the HTTP request/response workflow, and it's how Kong adds functionalities to an API, like Authentication or Rate Limiting. Plugins have a configuration `value` field that requires a JSON object representing the plugin configuration. By default creating a plugin and adding it to an API will enforce the same rules to every Application consuming the API. Sometimes the plugin configuration needs to be tuned to different values for some specific applications, for example when the Rate Limiting for an API is set to 20 requests per minute, but it needs to be increased for some specific Applications. In Kong it's possible to do that by creating a new Plugin object specifying the optional `application_id` field.
 
 ### Create Plugin
 
 `POST /plugins/`
-    
+
 **Form Parameters**
 
-* **name** - The name of the Plugin that's going to be added. The Plugin should have already been installed in every Apenode server separately.
+* **name** - The name of the Plugin that's going to be added. The Plugin should have already been installed in every Kong server separately.
 * **api_id** - The API ID that the Plugin will target
 * **value** - The JSON configuration required for the Plugin. Each Plugin will have different configuration fields, so check the realtive Plugin documentation to know which fields you can set.
 * application_id - An optional Application ID to customize the Plugin behavior when an incoming request is being sent by the specified Application. This configuration takes precedence over the global API configuration.
@@ -510,7 +510,7 @@ HTTP 200 OK
 ### List Plugins
 
 `GET /accounts/`
-    
+
 **Querystring Parameters**
 
 * id - The ID of the Plugin
@@ -550,9 +550,9 @@ HTTP 200 OK
 ### Update Plugin
 
 `PUT /plugins/{id}`
-    
-* **id** - The ID of the Plugin to update    
-    
+
+* **id** - The ID of the Plugin to update
+
 **Body**
 
 ```json
@@ -585,7 +585,7 @@ HTTP 200 OK
 ### Delete Plugin
 
 `DELETE /plugins/{id}`
-    
+
 **Parameters**
 
 * **id** - The ID of the Plugin to delete
