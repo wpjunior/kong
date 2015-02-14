@@ -19,7 +19,7 @@ block docs_content
 
     Every request being made to the API will hit Kong first, and then it will be proxied to the final API with an average processing latency that is usually lower than **8ms** per request. Because Kong can be easily scaled up and down there is no limit to the amount of requests it can serve, up to billions of HTTP requests.
 
-    [[IMAGE OF ARCHITECTURE, SHOWING CLIENT, KONG AND API]]
+    img(src='images/docs/kong-simple.png', alt='')
 
     Kong has been built following three foundamental principles:
 
@@ -44,7 +44,7 @@ block docs_content
 
     In order to work, Kong needs to have both these components set up and operational. A typical Kong installation can be summed up with the following picture:
 
-    [[IMAGE OF ARCHITECTURE, SHOWING A DETAILED PROXY SERVER, CASSANDRA, ETC]]
+    img(src='images/docs/kong-detailed.png', alt='')
 
     ### Api Proxy Server
 
