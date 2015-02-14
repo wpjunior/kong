@@ -1,38 +1,38 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Kong</title><meta name="description" content=""><meta name="author" content=""><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="//cloud.typography.com/7506032/804186/css/fonts.css"><link rel="stylesheet" href="css/styles.css"><link rel="icon" type="image/x-icon" href="images/favicon.ico"></head><body><div class="navbar"><div class="container"><a href="/" class="navbar-brand"><img src="images/branding.svg" alt="Kong" width="83" height="24"></a><button data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><nav id="navbar" class="navbar-nav"><ul><li><a href="#">What is Kong?</a></li><li><a href="overview.html">Documentation</a></li><li><a href="#">Support</a></li><li><div class="navbar-form"><a href="#" class="button">Download</a></div></li></ul></nav></div></div><div class="page"><header class="page-header"><div class="container"><div class="page-header-icon"><img src="images/icons/01-icn-documentation.svg" alt=""></div><div class="page-header-title"><h2>Documentation</h2><p>Masterize Kong in one hour</p></div></div></header><div class="container"><aside class="page-navigation"><nav><h5>Getting started</h5><ul><li><a href="/overview.html" class="active">Overview</a></li><li><a href="#">Run it for the first time</a></li></ul></nav><nav><h5>Advanced</h5><ul><li><a href="#">Configuration</a></li><li><a href="#">Datastores</a></li><li><a href="#">Plugins</a></li><li><a href="#">Scalability</a></li></ul></nav><nav><h5>Support</h5><ul><li><a href="#">Open Source</a></li><li><a href="#">Enterprise</a></li></ul></nav><nav><h5>Internal API endpoints</h5><ul><li><a href="#">API object</a><ul><li><a href="#">Overview</a></li><li><a href="#">Create API</a></li><li><a href="#">Get API</a></li><li><a href="#">List APIs</a></li><li><a href="#">Delete API</a></li></ul></li><li><a href="#">Account Object</a><ul><li><a href="#">Overview</a></li><li><a href="#">Create Account</a></li><li><a href="#">List Accounts</a></li><li><a href="#">Delete Account</a></li></ul></li><li><a href="#">Application Object</a><ul><li><a href="#">Overview</a></li><li><a href="#">Create Application</a></li><li><a href="#">Get Application</a></li><li><a href="#">List Applications</a></li><li><a href="#">Delete Application</a></li></ul></li></ul></nav></aside><div class="page-container"><div class="page-content"><h1>Overview</h1>
 
-<p>Welcome to the Kong official documentation, that will help you setting up the Kong, configuring it and operating it. We reccomend reading every section of this document to have a full understanding of the project.</p>
+<p>Welcome to the Kong official documentation, that will help you setting up Kong, configuring it and operating it. We reccomend reading every section of this document to have a full understanding of the project.</p>
 
-<p>If you have more specific questions about the Kong, please join our chat at #kong and the project maintainers will be happy to answer to your questions.</p>
+<p>If you have more specific questions about Kong, please join our chat at #kong and the project maintainers will be happy to answer to your questions.</p>
 
-<p>The Kong is trusted by more than 100,000 developers, processing billions of requests for more than 10,000 public and private APIs around the world.</p>
+<p>Kong is trusted by more than 100,000 developers, processing billions of requests for more than 10,000 public and private APIs around the world.</p>
 
-<h2>What is the Kong?</h2>
+<h2>What is Kong?</h2>
 
-<p>The Kong is an open-source enterprise API Layer (also called <em>API Gateway</em> or <em>API Middleware</em>) that runs in front of any RESTful API and provides additional functionalities like authentication, analytics, monitoring, rate limiting and billing without changing the source code of the API itself. It is a foundamental technology that any API provider should leverage to deliver better APIs without reinventing the wheel.</p>
+<p>Kong is an open-source enterprise API Layer (also called <em>API Gateway</em> or <em>API Middleware</em>) that runs in front of any RESTful API and provides additional functionalities like authentication, analytics, monitoring, rate limiting and billing without changing the source code of the API itself. It is a foundamental technology that any API provider should leverage to deliver better APIs without reinventing the wheel.</p>
 
-<p>Every request being made to the API will hit the Kong first, and then it will be proxied to the final API with an average processing latency that is usually lower than <strong>8ms</strong> per request. Because the Kong can be easily scaled up and down there is no limit to the amount of requests it can serve, up to billions of HTTP requests.</p>
+<p>Every request being made to the API will hit Kong first, and then it will be proxied to the final API with an average processing latency that is usually lower than <strong>8ms</strong> per request. Because Kong can be easily scaled up and down there is no limit to the amount of requests it can serve, up to billions of HTTP requests.</p>
 
 <p>[[IMAGE OF ARCHITECTURE, SHOWING CLIENT, KONG AND API]]</p>
 
-<p>The Kong has been built following three foundamental principles:</p>
+<p>Kong has been built following three foundamental principles:</p>
 
 <ul><li><strong>Scalable</strong>: it&#39;s easy to scale horizontally just by adding more machines. It can virtually handle any load.</li><li><strong>Customizable</strong>: it can be expanded by adding new features, and it&#39;s configurable through an internal RESTful API.</li><li><strong>Runs on any infrastructure</strong>: It can run in any cloud or on-premise environment, in a single or multi-datacenter setup, for any kind of API: public, private and partner APIs.</li></ul>
 
 <h2>Plugins</h2>
 
-<p>All the functionalities provided by the Kong are served by easy to use <strong>plugins</strong>: authentication, rate-limiting, billing features are provided through an authentication plugin, a rate-limiting plugin, and a billing plugin among the others. You can decide which plugin to install and how to configure them through the Kong&#39;s RESTful internal API.</p>
+<p>All the functionalities provided by Kong are served by easy to use <strong>plugins</strong>: authentication, rate-limiting, billing features are provided through an authentication plugin, a rate-limiting plugin, and a billing plugin among the others. You can decide which plugin to install and how to configure them through the Kong&#39;s RESTful internal API.</p>
 
-<p>A plugin is code that can hook into the life-cycle of both requests and responses, with the additional possibility of changing their content, thus allowing great customization. For example, a SOAP to REST converter plugin is totally possible with the Kong.</p>
+<p>A plugin is code that can hook into the life-cycle of both requests and responses, with the additional possibility of changing their content, thus allowing great customization. For example, a SOAP to REST converter plugin is totally possible with Kong.</p>
 
-<p>By having plugins, the Kong can be extended to fit any custom need or integration challenge. For example, if you need to integrate the API user authentication with a third-party enterprise security system, that would be implemented in a dedicated plugin that will run on every API request. More advanced users can build their own plugins, to extend the functionality of the Kong.</p>
+<p>By having plugins, Kong can be extended to fit any custom need or integration challenge. For example, if you need to integrate the API user authentication with a third-party enterprise security system, that would be implemented in a dedicated plugin that will run on every API request. More advanced users can build their own plugins, to extend the functionality of Kong.</p>
 
 <h2>How does it work?</h2>
 
-<p>The Kong is made of two different components, that are easy to set up and to scale independently:</p>
+<p>Kong is made of two different components, that are easy to set up and to scale independently:</p>
 
 <ul><li>The <strong>API Proxy Server</strong>, based on a modified version of the widely adopted <strong>nginx</strong> server, that processes the API requests.</li><li>An underlying <strong>Datastore</strong> for storing operational data, <strong>Apache Cassandra</strong>, which is being used by major companies like Netflix, Comcast or Facebook and it&#39;s known for being highly scalable.</li></ul>
 
-<p>In order to work, the Kong needs to have both these components set up and operational. A typical Kong installation can be summed up with the following picture:</p>
+<p>In order to work, Kong needs to have both these components set up and operational. A typical Kong installation can be summed up with the following picture:</p>
 
 <p>[[IMAGE OF ARCHITECTURE, SHOWING A DETAILED PROXY SERVER, CASSANDRA, ETC]]</p>
 
@@ -40,21 +40,21 @@
 
 <p>The API Proxy Server is the component that will actually process the API requests and execute the configured plugins to provide additional functionalities. It is also the component that will invoke the final API.</p>
 
-<p>The proxy server also offers an internal API that can be used to configure the Kong, create new users, and a handful of other operations. This makes it extremely easy to integrate the Kong with existing systems, and it also enables beautiful user experiences: for example when implementing an api key provisioning flow, a website can directly communicate with the Kong for the credentials provisioning.</p>
+<p>The proxy server also offers an internal API that can be used to configure Kong, create new users, and a handful of other operations. This makes it extremely easy to integrate Kong with existing systems, and it also enables beautiful user experiences: for example when implementing an api key provisioning flow, a website can directly communicate with Kong for the credentials provisioning.</p>
 
 <h3>Datastore</h3>
 
-<p>Kong requires Apache Cassandra running alongside the Proxy Server. It is being used to store data that will be used by the Proxy Server to function properly, like APIs, Accounts and Applications data, besides metrics used internally. The Kong won&#39;t function without a running Cassandra instance/cluster.</p>
+<p>Kong requires Apache Cassandra running alongside the Proxy Server. It is being used to store data that will be used by the Proxy Server to function properly, like APIs, Accounts and Applications data, besides metrics used internally. Kong won&#39;t function without a running Cassandra instance/cluster.</p>
 
 <p>Cassandra has been chosen because is easy to scale up and down just by adding or removing nodes, and because it can be deployed in lots of different environments, from a single machine to a multi-datacenter cluster.</p>
 
 <h1>Run it for the first time</h1>
 
-<p>Running the Kong is very easy and will take a couple of minutes. To get started quickly choose between one of the following deployment options:</p>
+<p>Running Kong is very easy and will take a couple of minutes. To get started quickly choose between one of the following deployment options:</p>
 
 <ul><li><a href="">From source</a></li><li><a href="">Docker</a></li><li><a href="">Vagrant</a></li><li><a href="">AWS Image</a></li></ul>
 
-<p>The Docker, Vagrant and AWS deployment options will already start a local Apache Cassandra instance. This is great for testing the Kong, but once you go to production we reccomend having dedicated servers/instances for your Cassandra cluster.</p>
+<p>The Docker, Vagrant and AWS deployment options will already start a local Apache Cassandra instance. This is great for testing Kong, but once you go to production we reccomend having dedicated servers/instances for your Cassandra cluster.</p>
 
 <h1>Configuration</h1>
 
@@ -64,7 +64,7 @@
 
 <h2>API Object</h2>
 
-<p>The API object describes an API that&#39;s being exposed by the Kong. In order to do that the Kong needs to know what is going to be the DNS address that will be pointing to the API, and what is the final target URL of the API where the requests will be proxied. The Kong can expose more than one API.</p>
+<p>The API object describes an API that&#39;s being exposed by Kong. In order to do that Kong needs to know what is going to be the DNS address that will be pointing to the API, and what is the final target URL of the API where the requests will be proxied. Kong can serve more than one API domain.</p>
 
 <h3>Create API</h3>
 
@@ -192,7 +192,7 @@ HTTP 204 NO CONTENT
 
 <h2>Account Object</h2>
 
-<p>The Account object represents an account, or user, that can have one or more applications to consume the API objects. The Account object can be mapped with your database to keep consistency between the Apenode and your existing primary datastore.</p>
+<p>The Account object represents an account, or user, that can have one or more applications to consume the API objects. The Account object can be mapped with your database to keep consistency between Kong and your existing primary datastore.</p>
 
 <h3>Create Account</h3>
 
@@ -200,7 +200,7 @@ HTTP 204 NO CONTENT
 
 <p><strong>Form Parameters</strong></p>
 
-<ul><li>provider_id - This is an optional field where you can store an existing ID for an Account, useful to map an Apenode Account with a user in your existing database</li></ul>
+<ul><li>provider_id - This is an optional field where you can store an existing ID for an Account, useful to map a Kong Account with a user in your existing database</li></ul>
 
 <p><strong>Returns</strong></p>
 
@@ -436,7 +436,7 @@ HTTP 204 NO CONTENT
 
 <h2>Plugin Object</h2>
 
-<p>The Plugin object represents a plugin that will be executed during the HTTP request/response workflow, and it&#39;s how the Apenode adds functionalities to an API, like Authentication or Rate Limiting. Plugins have a configuration <code>value</code> field that requires a JSON object representing the plugin configuration. By default creating a plugin and adding it to an API will enforce the same rules to every Application consuming the API. Sometimes the plugin configuration needs to be tuned to different values for some specific applications, for example when the Rate Limiting for an API is set to 20 requests per minute, but it needs to be increased for some specific Applications. In the Apenode it&#39;s possible to do that by creating a new Plugin object specifying the optional <code>application_id</code> field.</p>
+<p>The Plugin object represents a plugin that will be executed during the HTTP request/response workflow, and it&#39;s how Kong adds functionalities to an API, like Authentication or Rate Limiting. Plugins have a configuration <code>value</code> field that requires a JSON object representing the plugin configuration. By default creating a plugin and adding it to an API will enforce the same rules to every Application consuming the API. Sometimes the plugin configuration needs to be tuned to different values for some specific applications, for example when the Rate Limiting for an API is set to 20 requests per minute, but it needs to be increased for some specific Applications. In Kong it&#39;s possible to do that by creating a new Plugin object specifying the optional <code>application_id</code> field.</p>
 
 <h3>Create Plugin</h3>
 
@@ -444,7 +444,7 @@ HTTP 204 NO CONTENT
 
 <p><strong>Form Parameters</strong></p>
 
-<ul><li><strong>name</strong> - The name of the Plugin that&#39;s going to be added. The Plugin should have already been installed in every Apenode server separately.</li><li><strong>api_id</strong> - The API ID that the Plugin will target</li><li><strong>value</strong> - The JSON configuration required for the Plugin. Each Plugin will have different configuration fields, so check the realtive Plugin documentation to know which fields you can set.</li><li>application_id - An optional Application ID to customize the Plugin behavior when an incoming request is being sent by the specified Application. This configuration takes precedence over the global API configuration.</li></ul>
+<ul><li><strong>name</strong> - The name of the Plugin that&#39;s going to be added. The Plugin should have already been installed in every Kong server separately.</li><li><strong>api_id</strong> - The API ID that the Plugin will target</li><li><strong>value</strong> - The JSON configuration required for the Plugin. Each Plugin will have different configuration fields, so check the realtive Plugin documentation to know which fields you can set.</li><li>application_id - An optional Application ID to customize the Plugin behavior when an incoming request is being sent by the specified Application. This configuration takes precedence over the global API configuration.</li></ul>
 
 <p><strong>Returns</strong></p>
 
