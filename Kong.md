@@ -12,7 +12,7 @@ Kong is an open-source enterprise API Layer (also called *API Gateway* or *API M
 
 Every request being made to the API will hit Kong first, and then it will be proxied to the final API with an average processing latency that is usually lower than **8ms** per request. Because Kong can be easily scaled up and down there is no limit to the amount of requests it can serve, up to billions of HTTP requests.
 
-img(src='images/docs/kong-simple.png', alt='')
+![](images/docs/kong-simple.png)
 
 Kong has been built following three foundamental principles:
 
@@ -37,7 +37,7 @@ Kong is made of two different components, that are easy to set up and to scale i
 
 In order to work, Kong needs to have both these components set up and operational. A typical Kong installation can be summed up with the following picture:
 
-img(src='images/docs/kong-detailed.png', alt='')
+![](images/docs/kong-detailed.png)
 
 ### Api Proxy Server
 
