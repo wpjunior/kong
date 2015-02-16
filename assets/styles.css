@@ -1723,9 +1723,19 @@ nav a.active {
   border-bottom: 1px solid #ebebeb;
   padding: 50px 0;
 }
+@media (max-width: 800px) {
+  .page-header {
+    padding: 25px 0;
+  }
+}
 .page-header h2 {
   font-size: 33px;
   font-weight: 300;
+}
+@media (max-width: 800px) {
+  .page-header h2 {
+    font-size: 25px;
+  }
 }
 .page-header h2,
 .page-header p {
@@ -1733,15 +1743,42 @@ nav a.active {
 }
 .page-header .page-header-icon {
   float: left;
+  width: 64px;
+}
+.page-header .page-header-icon img {
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 800px) {
+  .page-header .page-header-icon {
+    width: 48px;
+  }
 }
 .page-header .page-header-title {
   padding-left: 90px;
+}
+@media (max-width: 800px) {
+  .page-header .page-header-title {
+    padding-left: 68px;
+  }
 }
 .page-navigation {
   float: left;
   width: 230px;
   padding: 60px 0;
   border-right: 1px solid #ebebeb;
+}
+@media (max-width: 800px) {
+  .page-navigation {
+    float: none;
+    padding: 25px 0;
+    border: 0 none;
+    width: auto;
+  }
+  .page-navigation nav h5,
+  .page-navigation nav a {
+    font-size: 15px;
+  }
 }
 .page-navigation h5 {
   font-family: 'Whitney SSm SmallCaps A', 'Whitney SSm SmallCaps B', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -1776,11 +1813,21 @@ nav a.active {
 .page-container {
   padding: 60px 0 60px 230px;
 }
+@media (max-width: 800px) {
+  .page-container {
+    padding: 0;
+  }
+}
 .page-content {
   padding: 0 50px;
   font-size: 18px;
   font-family: 'Whitney A', 'Whitney B', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.5;
+}
+@media (max-width: 800px) {
+  .page-content {
+    padding: 0;
+  }
 }
 .page-content .big {
   font-size: 23px;
@@ -1820,10 +1867,12 @@ nav a.active {
 .page-content hr {
   border-top: 4px solid #ebebeb;
 }
-.page-content figure img {
+.page-content img {
   display: block;
+  max-width: 100%;
+  height: auto;
 }
-.page-content figure figcaption {
+.page-content figcaption {
   border: 1px solid #efefef;
   border-radius: 0 0 3px 3px;
   background-color: #fcfcfc;
