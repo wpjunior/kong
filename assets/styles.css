@@ -1889,7 +1889,6 @@ nav a.active {
   line-height: 24px;
   margin: 1em 0;
   padding: 8px 13px;
-  overflow: hidden;
   border-radius: 4px;
 }
 .page-content pre code {
