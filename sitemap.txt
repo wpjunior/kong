@@ -1,10 +1,16 @@
 
 
-http://getkong.org/docs/configuration/
+
+
+http://getkong.org/docs/index.html
 
 
 
-http://getkong.org/docs/overview/
+http://getkong.org/index.html
+
+
+
+
 
 
 
