@@ -16,7 +16,7 @@ local SCHEMA = {
 
 local Plugins = BaseDao:extend()
 
-function Plugins:new(database, properties)
+function Plugins:new(properties)
   self._schema = SCHEMA
   self._deserialize = true
   self._queries = {
@@ -62,7 +62,7 @@ function Plugins:new(database, properties)
     }
   }
 
-  Plugins.super.new(self, database)
+  Plugins.super.new(self, properties)
 end
 
 function Plugins:_check_value_schema(t)

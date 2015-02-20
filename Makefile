@@ -10,7 +10,7 @@ TESTS_DIR ?= $(KONG_HOME)/config.tests
 TESTS_KONG_CONF ?= $(TESTS_DIR)/kong.yaml
 TESTS_NGINX_CONF ?= $(TESTS_DIR)/nginx.conf
 
-.PHONY: install dev clean reset seed drop test test-integration test-web test-proxy test-all
+.PHONY: install dev clean migrate reset seed drop test test-integration test-web test-proxy test-all
 
 install:
 	@luarocks make kong-*.rockspec PCRE_LIBDIR=`find / -type f -name "libpcre.so*" -print -quit | xargs dirname` OPENSSL_LIBDIR=`find / -type f -name "libssl.so*" -print -quit | xargs dirname`
@@ -26,6 +26,9 @@ dev:
 clean:
 	@rm -rf $(DIR)
 	@rm -rf $(TESTS_DIR)
+
+migrate:
+	@scripts/migrate migrate --conf=$(KONG_CONF)
 
 reset:
 	@scripts/migrate reset --conf=$(KONG_CONF)
